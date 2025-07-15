@@ -32,7 +32,14 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/services/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/formations/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/devis/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/temoignages/public").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/temoignages/{id}").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/inscriptions").permitAll()
                 // Ajoute ici d'autres routes publiques si besoin
                 .anyRequest().authenticated()
             )
