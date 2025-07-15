@@ -7,7 +7,7 @@ import com.nouboudem.api.user.mapper.UserMapper;
 import com.nouboudem.api.user.repository.UserRepository;
 import com.nouboudem.api.user.service.UserService;
 import lombok.RequiredArgsConstructor;
-// import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,14 +18,13 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
-    // private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public UserDto createUser(UserDto dto) {
         User user = User.builder()
                 .email(dto.getEmail())
-                // .password(passwordEncoder.encode(dto.getPassword()))
-                .password(dto.getPassword())
+                .password(passwordEncoder.encode(dto.getPassword()))
                 .nom(dto.getNom())
                 .prenom(dto.getPrenom())
                 .portable(dto.getPortable())
@@ -56,11 +55,8 @@ public class UserServiceImpl implements UserService {
             user.setNom(dto.getNom());
             user.setPrenom(dto.getPrenom());
             user.setEmail(dto.getEmail());
-            // if (dto.getPassword() != null && !dto.getPassword().isEmpty()) {
-            //     user.setPassword(passwordEncoder.encode(dto.getPassword()));
-            // }
             if (dto.getPassword() != null && !dto.getPassword().isEmpty()) {
-                user.setPassword(dto.getPassword());
+                user.setPassword(passwordEncoder.encode(dto.getPassword()));
             }
             user.setRole(dto.getRole());
             user.setStatut(dto.isStatut());
