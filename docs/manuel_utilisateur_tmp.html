@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>manuel_utilisateur.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="manuel-dutilisation-de-la-plateforme-nouboudem-construction-btp-sarl">Manuel d'utilisation de la plateforme Nouboudem Construction BTP SARL</h1>
+<p><strong>Auteur : KUITO OUANDJI ANGE LUGRESSE</strong><br>
+<strong>Date : 16/07/2025</strong></p>
+<hr>
+<h2 id="table-des-mati%C3%A8res">Table des matières</h2>
+<ol>
+<li><a href="#1-introduction">Introduction</a></li>
+<li><a href="#2-acc%C3%A8s-%C3%A0-la-plateforme">Accès à la plateforme</a></li>
+<li><a href="#3-guide-pour-les-visiteurs">Guide pour les visiteurs</a>
+<ol>
+<li><a href="#31-d%C3%A9couverte-de-lentreprise-et-des-services">Découverte de l'entreprise et des services</a></li>
+<li><a href="#32-consultation-des-formations">Consultation des formations</a></li>
+<li><a href="#33-demande-de-devis-public">Demande de devis public</a></li>
+<li><a href="#34-lecture-des-t%C3%A9moignages-clients">Lecture des témoignages clients</a></li>
+<li><a href="#35-contact-et-prise-dinformation">Contact et prise d'information</a></li>
+</ol>
+</li>
+<li><a href="#4-guide-pour-les-clients">Guide pour les clients</a>
+<ol>
+<li><a href="#41-cr%C3%A9ation-de-compte-et-connexion">Création de compte et connexion</a></li>
+<li><a href="#42-espace-client--suivi-des-projets">Espace client : suivi des projets</a></li>
+<li><a href="#43-consultation-et-t%C3%A9l%C3%A9chargement-des-devis">Consultation et téléchargement des devis</a></li>
+<li><a href="#44-inscription-%C3%A0-une-formation">Inscription à une formation</a></li>
+<li><a href="#45-soumission-dun-t%C3%A9moignage">Soumission d'un témoignage</a></li>
+</ol>
+</li>
+<li><a href="#5-guide-pour-les-administrateurs">Guide pour les administrateurs</a>
+<ol>
+<li><a href="#51-connexion-%C3%A0-lespace-dadministration">Connexion à l'espace d'administration</a></li>
+<li><a href="#52-gestion-des-utilisateurs">Gestion des utilisateurs</a></li>
+<li><a href="#53-gestion-des-projets-et-phases">Gestion des projets et phases</a></li>
+<li><a href="#54-gestion-des-devis-lots-et-lignes">Gestion des devis, lots et lignes</a></li>
+<li><a href="#55-gestion-des-formations-et-inscriptions">Gestion des formations et inscriptions</a></li>
+<li><a href="#56-gestion-des-m%C3%A9dias-et-documents">Gestion des médias et documents</a></li>
+<li><a href="#57-gestion-et-mod%C3%A9ration-des-t%C3%A9moignages">Gestion et modération des témoignages</a></li>
+<li><a href="#58-supervision-et-logs">Supervision et logs</a></li>
+</ol>
+</li>
+<li><a href="#6-faq-et-support">FAQ et support</a></li>
+</ol>
+<hr>
+<h1 id="1-introduction">1. Introduction</h1>
+<p>Ce manuel d’utilisation présente les principales fonctionnalités de la plateforme web Nouboudem Construction BTP SARL, à destination des visiteurs, clients et administrateurs. Il explique comment naviguer, utiliser les services, gérer les contenus et assurer le suivi des projets.</p>
+<h1 id="2-acc%C3%A8s-%C3%A0-la-plateforme">2. Accès à la plateforme</h1>
+<ul>
+<li><strong>URL d’accès</strong> : <a href="https://nouboudem-btp.com">https://nouboudem-btp.com</a> (exemple)</li>
+<li>Compatible sur ordinateur, tablette et mobile.</li>
+<li>Prérequis : navigateur web moderne (Chrome, Firefox, Edge, Safari…)</li>
+</ul>
+<h1 id="3-guide-pour-les-visiteurs">3. Guide pour les visiteurs</h1>
+<h2 id="31-d%C3%A9couverte-de-lentreprise-et-des-services">3.1. Découverte de l'entreprise et des services</h2>
+<ul>
+<li>Accueil : présentation de l’entreprise, de ses valeurs et de ses domaines d’expertise.</li>
+<li>Menu de navigation pour accéder aux services, réalisations, formations, témoignages.</li>
+</ul>
+<h2 id="32-consultation-des-formations">3.2. Consultation des formations</h2>
+<ul>
+<li>Accès libre à la liste des formations proposées.</li>
+<li>Détail de chaque formation : objectifs, débouchés, durée, frais.</li>
+</ul>
+<h2 id="33-demande-de-devis-public">3.3. Demande de devis public</h2>
+<ul>
+<li>Formulaire accessible sans compte pour demander un devis personnalisé.</li>
+<li>Saisie des informations de contact et du besoin.</li>
+<li>Réception d’un accusé de réception par email.</li>
+</ul>
+<h2 id="34-lecture-des-t%C3%A9moignages-clients">3.4. Lecture des témoignages clients</h2>
+<ul>
+<li>Accès à la liste des témoignages validés par l’administrateur.</li>
+<li>Filtrage ou recherche possible selon les réalisations.</li>
+</ul>
+<h2 id="35-contact-et-prise-dinformation">3.5. Contact et prise d'information</h2>
+<ul>
+<li>Formulaire de contact pour toute demande d’information.</li>
+<li>Coordonnées de l’entreprise affichées en bas de page.</li>
+</ul>
+<h1 id="4-guide-pour-les-clients">4. Guide pour les clients</h1>
+<h2 id="41-cr%C3%A9ation-de-compte-et-connexion">4.1. Création de compte et connexion</h2>
+<ul>
+<li>Inscription via le formulaire dédié (email, mot de passe, informations personnelles).</li>
+<li>Connexion sécurisée avec email et mot de passe.</li>
+<li>Réinitialisation du mot de passe possible en cas d’oubli.</li>
+</ul>
+<h2 id="42-espace-client--suivi-des-projets">4.2. Espace client : suivi des projets</h2>
+<ul>
+<li>Accès à la liste de ses projets en cours ou terminés.</li>
+<li>Visualisation de l’état d’avancement, des phases, des paiements associés.</li>
+</ul>
+<h2 id="43-consultation-et-t%C3%A9l%C3%A9chargement-des-devis">4.3. Consultation et téléchargement des devis</h2>
+<ul>
+<li>Liste des devis associés à ses projets ou demandes publiques.</li>
+<li>Téléchargement des devis au format PDF.</li>
+</ul>
+<h2 id="44-inscription-%C3%A0-une-formation">4.4. Inscription à une formation</h2>
+<ul>
+<li>Accès au catalogue des formations.</li>
+<li>Inscription en ligne à la formation de son choix.</li>
+<li>Suivi du statut de son inscription.</li>
+</ul>
+<h2 id="45-soumission-dun-t%C3%A9moignage">4.5. Soumission d'un témoignage</h2>
+<ul>
+<li>Formulaire pour déposer un témoignage sur un projet ou une formation.</li>
+<li>Validation par l’administrateur avant publication.</li>
+</ul>
+<h1 id="5-guide-pour-les-administrateurs">5. Guide pour les administrateurs</h1>
+<h2 id="51-connexion-%C3%A0-lespace-dadministration">5.1. Connexion à l'espace d'administration</h2>
+<ul>
+<li>Accès réservé via une URL dédiée.</li>
+<li>Authentification requise (email, mot de passe, rôle ADMIN).</li>
+</ul>
+<h2 id="52-gestion-des-utilisateurs">5.2. Gestion des utilisateurs</h2>
+<ul>
+<li>Liste, création, modification, suppression d’utilisateurs (clients, admins).</li>
+<li>Attribution des rôles et gestion des statuts.</li>
+</ul>
+<h2 id="53-gestion-des-projets-et-phases">5.3. Gestion des projets et phases</h2>
+<ul>
+<li>Création, modification, suppression de projets.</li>
+<li>Gestion des phases, avancement, paiements associés.</li>
+</ul>
+<h2 id="54-gestion-des-devis-lots-et-lignes">5.4. Gestion des devis, lots et lignes</h2>
+<ul>
+<li>Création et édition de devis, ajout de lots et de lignes de travaux.</li>
+<li>Calcul automatique des montants HT, TVA, TTC.</li>
+</ul>
+<h2 id="55-gestion-des-formations-et-inscriptions">5.5. Gestion des formations et inscriptions</h2>
+<ul>
+<li>Création, modification, suppression de formations.</li>
+<li>Suivi des inscriptions et gestion des participants.</li>
+</ul>
+<h2 id="56-gestion-des-m%C3%A9dias-et-documents">5.6. Gestion des médias et documents</h2>
+<ul>
+<li>Upload, visualisation, suppression de fichiers liés aux entités (projets, devis, formations, etc.).</li>
+</ul>
+<h2 id="57-gestion-et-mod%C3%A9ration-des-t%C3%A9moignages">5.7. Gestion et modération des témoignages</h2>
+<ul>
+<li>Validation ou suppression des témoignages soumis par les clients.</li>
+<li>Publication sur l’espace public après validation.</li>
+</ul>
+<h2 id="58-supervision-et-logs">5.8. Supervision et logs</h2>
+<ul>
+<li>Accès aux journaux d’activité et aux logs applicatifs.</li>
+<li>Suivi des erreurs, alertes et statistiques d’utilisation.</li>
+</ul>
+<h2 id="59-cr%C3%A9ation-dun-devis-projet-administrateur">5.9. Création d’un devis projet (Administrateur)</h2>
+<p>La création d’un devis projet par l’administrateur se fait en quelques étapes simples :</p>
+<h3 id="cr%C3%A9er-un-devis-projet"><strong>Créer un devis projet</strong></h3>
+<ol>
+<li><strong>Connectez-vous</strong> à l’espace d’administration avec vos identifiants administrateur.</li>
+<li>Dans le menu principal, cliquez sur <strong>“Gestion des devis”</strong> ou accédez à la section <strong>Devis</strong>.</li>
+<li>Cliquez sur le bouton <strong>“Nouveau devis”</strong> ou <strong>“Créer un devis”</strong>.</li>
+<li><strong>Sélectionnez le type de devis</strong> : choisissez <code>Projet</code>.</li>
+<li><strong>Renseignez les informations du devis</strong> :
+<ul>
+<li><strong>Projet associé</strong> : sélectionnez le projet concerné dans la liste déroulante.</li>
+<li><strong>Client</strong> : le client du projet est automatiquement associé.</li>
+<li><strong>Objet</strong> : indiquez l’objet du devis (ex : “Construction villa duplex”).</li>
+<li><strong>Total HT, TVA, Total TTC</strong> : saisissez les montants si besoin (ou laissez le calcul automatique).</li>
+</ul>
+</li>
+<li><strong>Ajoutez les lots de travaux</strong> :
+<ul>
+<li>Cliquez sur <strong>“Ajouter un lot”</strong>.</li>
+<li>Pour chaque lot, renseignez le nom, la description, puis ajoutez les lignes de devis (désignation, quantité, prix unitaire, etc.).</li>
+</ul>
+</li>
+<li><strong>Vérifiez le récapitulatif</strong> du devis (lots, lignes, montants).</li>
+<li>Cliquez sur <strong>“Enregistrer”</strong> ou <strong>“Valider”</strong> pour créer le devis.</li>
+<li>Un message de confirmation s’affiche. Le devis est désormais associé au projet et visible dans la liste des devis.</li>
+</ol>
+<p><img src="file:///d:/pro/BTP/docs/screenshots/creation_devis_projet.png" alt="Création d’un devis projet"></p>
+<blockquote>
+<p><strong>Astuce :</strong></p>
+<ul>
+<li>Vous pouvez modifier ou compléter le devis ultérieurement depuis la liste des devis.</li>
+<li>Utilisez la fonction d’export PDF pour transmettre le devis au client.</li>
+</ul>
+</blockquote>
+<h1 id="6-faq-et-support">6. FAQ et support</h1>
+<ul>
+<li><strong>Problème de connexion</strong> : vérifier l’email et le mot de passe, utiliser la fonction « mot de passe oublié ».</li>
+<li><strong>Problème d’inscription</strong> : vérifier que tous les champs obligatoires sont remplis.</li>
+<li><strong>Contact support</strong> : support@nouboudem-btp.com (exemple)</li>
+<li><strong>Documentation technique</strong> : voir le document dédié pour les développeurs et administrateurs système.</li>
+</ul>
+<hr>
+<p><strong>Fin du manuel d’utilisation.</strong></p>
+
+</body>
+</html>
